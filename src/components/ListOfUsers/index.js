@@ -14,10 +14,8 @@ export default function ListOfUsers() {
     let data
 
     db.collection("users")
-      .get()
-      .then(querySnapshot => {
+      .onSnapshot(querySnapshot => {
         data = querySnapshot.docs.map(doc => doc.data());
-      }).then(() => {
         setUsers(data)
       })
   }

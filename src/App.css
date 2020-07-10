@@ -19,6 +19,9 @@
 
 .list-chat, .current-chat {
   background-color: white;
-  height: 100%;
   padding: 10px;
+}
+
+.current-chat {
+  height: calc(100vh - 48px);
 }
