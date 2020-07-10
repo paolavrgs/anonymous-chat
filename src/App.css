@@ -17,11 +17,12 @@
   font-size: 12px;
 }
 
-.list-chat, .current-chat {
+.chat-list, .chat-show {
   background-color: white;
-  padding: 10px;
+  padding: 20px;
+  position: relative;
 }
 
-.current-chat {
+.chat-show {
   height: calc(100vh - 48px);
 }

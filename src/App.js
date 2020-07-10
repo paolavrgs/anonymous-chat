@@ -3,11 +3,8 @@ import firebase from 'firebase'
 import 'antd/dist/antd.css'
 import './App.css'
 import CustomLayout from './components/Layout'
-import { Tabs } from 'antd'
-import ListOfUsers from './components/ListOfUsers'
-import { SolutionOutlined } from '@ant-design/icons'
-
-const { TabPane } = Tabs
+import ChatsList from './components/ChatsList'
+import ChatShow from './components/Chat'
 
 function App() {
   const [user, setUser] = useState('')
@@ -43,27 +40,8 @@ function App() {
   return (
     <div className="App">
       <CustomLayout user={user}>
-        <div className="App-grid">
-          <div className="list-chat">
-            <Tabs defaultActiveKey="1">
-              <TabPane tab="Chats" key="1">
-                My chats
-              </TabPane>
-              <TabPane
-                key="2"
-                tab={
-                  <span>
-                    <SolutionOutlined />
-                    Users
-                  </span>
-                }
-              >
-                <ListOfUsers />
-              </TabPane>
-            </Tabs>
-          </div>
-          <div className="current-chat">Current Chat</div>
-        </div>
+        <ChatsList />
+        <ChatShow />
       </CustomLayout>
     </div>
   )

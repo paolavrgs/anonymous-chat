@@ -22,7 +22,7 @@ export default function ListOfUsers() {
 
   return (
     <List
-      size="large"
+      size="medium"
       bordered
       dataSource={users}
       renderItem={({user}) => <List.Item>{user.id}</List.Item>}

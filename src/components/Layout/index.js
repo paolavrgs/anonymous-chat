@@ -15,7 +15,7 @@ export default function CustomLayout({children, user}) {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <div className="logo">User: {user.id}</div>
+        <div className="logo">Welcome, {user.id}</div>
         <Menu theme="dark" mode="inline">
           <Menu.Item key="1" icon={<UsergroupAddOutlined />}>
             Create new group
@@ -31,7 +31,9 @@ export default function CustomLayout({children, user}) {
       <Layout className="site-layout">
         <Content style={{ margin: '0 16px' }}>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            { children }
+            <div className="App-grid">
+              { children }
+            </div>
           </div>
         </Content>
       </Layout>
