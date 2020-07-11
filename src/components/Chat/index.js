@@ -3,13 +3,20 @@ import { Form, Input, Button } from 'antd'
 import { ChatHeader, ChatWrapper, ChatMessage, ChatForm } from './styles'
 const { TextArea } = Input
 
-export default function ChatShow({ onChange, onSubmit, value }) {
-  const [visible, setVisible] = useState(true)
+export default function ChatShow({ visible, participantUser}) {
+  const [messageBody, setMessageBody] = useState('')
+
+  const onChange = (e) => {
+    setMessageBody(e.target.value)
+  }
+
+  const onSubmit = () => {
+  }
 
   return (
     <div className={`chat-show show-${visible}`}>
       <ChatHeader>
-        <h4>Participant user</h4>
+        <h4>{participantUser.id}</h4>
       </ChatHeader>
 
       <ChatWrapper>
@@ -19,7 +26,7 @@ export default function ChatShow({ onChange, onSubmit, value }) {
 
       <ChatForm>
         <Form.Item>
-          <TextArea rows={1} onChange={onChange} value={value} />
+          <TextArea rows={1} onChange={onChange} value={messageBody} />
         </Form.Item>
         <Form.Item>
           <Button htmlType="submit" onClick={onSubmit} type="primary">Send</Button>

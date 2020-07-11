@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd'
 import { UsergroupAddOutlined,  UserOutlined } from '@ant-design/icons'
-
+import { Nickname } from './styles'
 const { Content, Sider } = Layout
 const { SubMenu } = Menu
 
@@ -15,7 +15,7 @@ export default function CustomLayout({children, user}) {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <div className="logo">Welcome, {user.id}</div>
+        <Nickname>Welcome, {user.id}</Nickname>
         <Menu theme="dark" mode="inline">
           <Menu.Item key="1" icon={<UsergroupAddOutlined />}>
             Create new group
