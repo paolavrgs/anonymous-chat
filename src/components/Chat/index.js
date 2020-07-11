@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Input, Button } from 'antd'
 import { ChatHeader, ChatWrapper, ChatMessage, ChatForm } from './styles'
 const { TextArea } = Input
 
 export default function ChatShow({ onChange, onSubmit, value }) {
+  const [visible, setVisible] = useState(true)
+
   return (
-    <div className="chat-show">
+    <div className={`chat-show show-${visible}`}>
       <ChatHeader>
         <h4>Participant user</h4>
       </ChatHeader>

@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { List } from 'antd';
-import firebase from 'firebase'
+import React, { useContext } from 'react'
+import UserContext from '../../context/userContext'
 
 export default function ListOfUsers() {
-  const [users, setUsers] = useState([])
+  const users = useContext(UserContext)
 
-  useEffect(() => {
-    getUsers()
-  }, [])
-
-  function getUsers() {
-    const db = firebase.firestore()
-    let data
-
-    db.collection("users")
-      .onSnapshot(querySnapshot => {
-        data = querySnapshot.docs.map(doc => doc.data());
-        setUsers(data)
-      })
+  const openChat = (id) => {
+    console.log(`abrir chat ${id}`)
   }
 
   return (
-    <List
-      size="medium"
-      bordered
-      dataSource={users}
-      renderItem={({user}) => <List.Item>{user.id}</List.Item>}
-    />
+    <ul>
+      {users !== undefined && users.map(({user}) => {
+        return (
+          <li key={user.id} onClick={() => openChat(user.id)}>{user.id}</li>
+        )
+      })}
+    </ul>
   )
 }

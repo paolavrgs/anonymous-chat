@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import firebase from 'firebase'
+import { MessageOutlined, SolutionOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import './App.css'
+import useUsers from './hooks/useUsers';
+import UserContext from './context/userContext'
 import CustomLayout from './components/Layout'
-import ChatsList from './components/ChatsList'
+import MainTabs from './components/MainTabs'
 import ChatShow from './components/Chat'
+import ListOfUsers from './components/ListOfUsers'
+import ListOfChats from './components/ListOfChats'
+import { createUser } from './services/users'
 
 function App() {
   const [user, setUser] = useState('')
+  const users = useUsers()
 
   useEffect(() => {
     let userSessionId
@@ -17,18 +23,7 @@ function App() {
       userSessionId = window.sessionStorage['user'] = `user-${randomNumber}`
 
       // Create user in firebase
-      const db = firebase.firestore()
-      db.collection("users").add({
-        user: {
-          id: userSessionId
-        }
-      })
-      .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      })
+      createUser(userSessionId)
 
     } else {
       userSessionId = window.sessionStorage['user']
@@ -39,10 +34,17 @@ function App() {
 
   return (
     <div className="App">
-      <CustomLayout user={user}>
-        <ChatsList />
-        <ChatShow />
-      </CustomLayout>
+      <UserContext.Provider value={users}>
+        <CustomLayout user={user}>
+          <div className="chat-list">
+            <MainTabs>
+              <ListOfChats tabname={<span><MessageOutlined />Chats</span>} />
+              <ListOfUsers tabname={<span><SolutionOutlined />Users</span>} />
+            </MainTabs>
+          </div>
+          <ChatShow />
+        </CustomLayout>
+      </UserContext.Provider>
     </div>
   )
 }
