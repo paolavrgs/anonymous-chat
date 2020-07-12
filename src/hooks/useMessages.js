@@ -8,7 +8,7 @@ export default function useMessages(chat_id) {
     const db = firebase.firestore()
     let data
 
-    db.collection("messages")
+    db.collection("messages").orderBy("created_at")
       .onSnapshot(querySnapshot => {
         data = querySnapshot.docs.map(doc => {
           const docData = doc.data()
