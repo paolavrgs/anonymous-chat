@@ -4,6 +4,9 @@ import { Form } from 'antd'
 export const ChatHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   h4 {
     font-weight: 600;

@@ -15,7 +15,7 @@ export default function CustomLayout({children, user}) {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <Nickname>Welcome, {user.id}</Nickname>
+        <Nickname>Welcome, {user.nickname}</Nickname>
         <Menu theme="dark" mode="inline">
           <Menu.Item key="1" icon={<UsergroupAddOutlined />}>
             Create new group

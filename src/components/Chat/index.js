@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'antd'
 import { ChatHeader, ChatWrapper, ChatMessage, ChatForm } from './styles'
 const { TextArea } = Input
 
-export default function ChatShow({ visible, participantUser}) {
+export default function ChatShow({ visible, participantUser }) {
   const [messageBody, setMessageBody] = useState('')
 
   const onChange = (e) => {
@@ -16,7 +16,7 @@ export default function ChatShow({ visible, participantUser}) {
   return (
     <div className={`chat-show show-${visible}`}>
       <ChatHeader>
-        <h4>{participantUser.id}</h4>
+        <h4>{participantUser.nickname}</h4>
       </ChatHeader>
 
       <ChatWrapper>

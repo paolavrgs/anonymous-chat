@@ -1,28 +1,29 @@
 import { useEffect, useState } from 'react'
 import firebase from 'firebase'
 
-export default function useUsers() {
-  const [users, setUsers] = useState([])
+export default function useChats() {
+  const [chats, setChats] = useState([])
   
   useEffect(() => {
-    getUsers()
+    getChats()
   }, [])
 
-  function getUsers() {
+  function getChats() {
     const db = firebase.firestore()
     let data
 
-    db.collection("users")
+    db.collection("chats")
       .onSnapshot(querySnapshot => {
         data = querySnapshot.docs.map(doc => {
           const docData = doc.data()
           const { id } = doc
           return { ...docData, id }
         });
-        setUsers(data)
+        // console.log(data)
+        setChats(data)
       })
   }
 
-  return users
+  return chats
 }
 
