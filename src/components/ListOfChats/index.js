@@ -3,7 +3,6 @@ import ChatsContext from '../../context/chatsContext'
 
 export default function ListOfChats({currentUser, openChat}) {
   const chats = useContext(ChatsContext)
-  console.log(chats)
 
   return (
     <ul>

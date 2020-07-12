@@ -12,7 +12,7 @@ import ChatsContext from './context/chatsContext'
 function App() {
   const [currentUser, setUser] = useState('')
   const users = useUsers()
-  const chats = useChats()
+  const chats = useChats(currentUser)
 
   useEffect(() => {
     let userSessionNickname

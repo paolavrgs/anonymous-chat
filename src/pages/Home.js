@@ -18,16 +18,14 @@ export default function Home({currentUser}) {
     const chatUsers = [participantUser, currentUser]
 
     chats.forEach(chat => {
+
       if (chat.users.some(user => user.nickname === participantUser.nickname)) {
-        console.log('mostrar chat')
         setChatVisible(true)
       } else {
-        console.log('crear y mostrar chat')
         createChat(chatUsers) // Create chat in firebase
         setChatVisible(true)
       }
     })
-
   }
 
   return (
