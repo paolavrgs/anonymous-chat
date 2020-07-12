@@ -5,27 +5,33 @@ import ChatShow from '../components/Chat'
 import ListOfUsers from '../components/ListOfUsers'
 import ListOfChats from '../components/ListOfChats'
 import ChatsContext from '../context/chatsContext'
-import { createChat } from '../services/chat'
+import { createChat } from '../services/chats'
 
 export default function Home({currentUser}) {
   const [chatVisible, setChatVisible] = useState(false)
   const [currentChatParticipant, setCurrentChatParticipant] = useState('')
+  const [currentChatId, setCurrentChatId] = useState('')
+
   const chats = useContext(ChatsContext)
   
   const openChat = (participantUser) => {
     setCurrentChatParticipant(participantUser)
-
     const chatUsers = [participantUser, currentUser]
+    let chat        = null
 
-    chats.forEach(chat => {
-
-      if (chat.users.some(user => user.nickname === participantUser.nickname)) {
-        setChatVisible(true)
-      } else {
-        createChat(chatUsers) // Create chat in firebase
-        setChatVisible(true)
-      }
+    chat = chats.find(chat => {
+      return chat.users.some(u => u.nickname === participantUser.nickname)
     })
+
+    if (!chat) {
+      createChat(chatUsers).then(ch => {
+        setCurrentChatId(ch.id)
+      })
+    } else {
+      setCurrentChatId(chat.id)
+    }
+
+    setChatVisible(true)
   }
 
   return (
@@ -35,17 +41,19 @@ export default function Home({currentUser}) {
           <ListOfChats
             tabname={<span><MessageOutlined />Chats</span>}
             openChat={openChat}
-            currentUser={currentUser.nickname}
+            currentUser={currentUser}
           />
           <ListOfUsers
             tabname={<span><SolutionOutlined />Users</span>}
             openChat={openChat}
-            currentUser={currentUser.nickname}
+            currentUser={currentUser}
           />
         </MainTabs>
       </div>
       <ChatShow
         visible={chatVisible}
+        currentChatId={currentChatId}
+        ownerUser={currentUser}
         participantUser={currentChatParticipant}
       />
     </>

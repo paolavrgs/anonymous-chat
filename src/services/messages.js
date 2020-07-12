@@ -1,11 +1,14 @@
 import firebase from 'firebase'
 
-export const createChat = (users, group = false) => {
+export const createMessage = (chat_id, owner, participant, body) => {
+  console.log({chat_id, owner, participant, body})
   const db = firebase.firestore()
 
-  db.collection("chats").add({
-    users,
-    group
+  db.collection("messages").add({
+    chat_id,
+    body,
+    owner,
+    participant
   })
   .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);

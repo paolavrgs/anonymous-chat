@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import { createMessage } from '../../services/messages'
 import { Form, Input, Button } from 'antd'
 import { ChatHeader, ChatWrapper, ChatMessage, ChatForm } from './styles'
-const { TextArea } = Input
 
-export default function ChatShow({ visible, participantUser }) {
+export default function ChatShow({ visible, currentChatId, ownerUser, participantUser }) {
   const [messageBody, setMessageBody] = useState('')
 
   const onChange = (e) => {
@@ -11,6 +11,8 @@ export default function ChatShow({ visible, participantUser }) {
   }
 
   const onSubmit = () => {
+    createMessage(currentChatId, ownerUser, participantUser, messageBody)
+    setMessageBody('')
   }
 
   return (
@@ -20,13 +22,13 @@ export default function ChatShow({ visible, participantUser }) {
       </ChatHeader>
 
       <ChatWrapper>
-        <ChatMessage>Hi paola</ChatMessage>
-        <ChatMessage className="own">Hi user</ChatMessage>
+        {/* <ChatMessage>Hi paola</ChatMessage> */}
+        {/* <ChatMessage className="own">Hi user</ChatMessage> */}
       </ChatWrapper>
 
-      <ChatForm>
+      <ChatForm onSubmit={onSubmit}>
         <Form.Item>
-          <TextArea rows={1} onChange={onChange} value={messageBody} />
+          <Input id="messageInput" onChange={onChange} value={messageBody} />
         </Form.Item>
         <Form.Item>
           <Button htmlType="submit" onClick={onSubmit} type="primary">Send</Button>

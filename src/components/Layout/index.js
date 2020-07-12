@@ -5,7 +5,7 @@ import { Nickname } from './styles'
 const { Content, Sider } = Layout
 const { SubMenu } = Menu
 
-export default function CustomLayout({children, user}) {
+export default function CustomLayout({children, currentUser}) {
   const [collapsed, setCollapsed] = useState(false)
 
   const onCollapse = collapsed => {
@@ -15,7 +15,7 @@ export default function CustomLayout({children, user}) {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <Nickname>Welcome, {user.nickname}</Nickname>
+        <Nickname>Welcome, {currentUser.nickname}</Nickname>
         <Menu theme="dark" mode="inline">
           <Menu.Item key="1" icon={<UsergroupAddOutlined />}>
             Create new group
