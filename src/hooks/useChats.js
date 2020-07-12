@@ -15,7 +15,7 @@ export default function useChats(currentUser) {
           return { ...docData, id }
         });
 
-        const newData = data.filter(chat => (chat.users.some(user => user.nickname === currentUser.nickname)))
+        const newData = data.filter(chat => (chat.users.some(user => user.id === currentUser.id)))
 
         setChats(newData)
       })

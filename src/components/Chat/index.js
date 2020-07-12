@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { createMessage } from '../../services/messages'
 import { Form, Input, Button } from 'antd'
-import { ChatHeader, ChatWrapper, ChatMessage, ChatForm } from './styles'
+import { ChatHeader, ChatWrapper, ChatForm } from './styles'
+import Messages from '../Messages'
 
 export default function ChatShow({ visible, currentChatId, ownerUser, participantUser }) {
   const [messageBody, setMessageBody] = useState('')
@@ -22,8 +23,9 @@ export default function ChatShow({ visible, currentChatId, ownerUser, participan
       </ChatHeader>
 
       <ChatWrapper>
-        {/* <ChatMessage>Hi paola</ChatMessage> */}
-        {/* <ChatMessage className="own">Hi user</ChatMessage> */}
+        {visible &&
+          <Messages chatId={currentChatId} currentUser={ownerUser} />
+        }
       </ChatWrapper>
 
       <ChatForm onSubmit={onSubmit}>
