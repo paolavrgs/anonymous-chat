@@ -18,3 +18,17 @@ export const ChatMessage = styled.div`
     background-color: #1890ff;
   }
 `
+
+export const NoData = styled.div`
+  width: 100%;
+  height: calc(100% - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    font-size: 40px;
+    color: #000;
+  }
+`

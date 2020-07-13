@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { ListItem, ListUl } from './styles'
+import { ListItem, ListUl, StyledButton } from './styles'
 import ChatsContext from '../../context/chatsContext'
 
 export default function ListOfGroups({currentUser, actionFunction, showModal}) {
@@ -7,7 +7,7 @@ export default function ListOfGroups({currentUser, actionFunction, showModal}) {
 
   return (
     <>
-      <button onClick={showModal}>Create new group chat</button>
+      <StyledButton onClick={showModal} type="primary">Create new group chat</StyledButton>
       <ListUl>
         {chats !== undefined && chats.filter(chat => chat.group === true).map((chat) => {
           return (
@@ -15,7 +15,7 @@ export default function ListOfGroups({currentUser, actionFunction, showModal}) {
               {chat.users.map(user => {
                 return (
                   user.id !== currentUser.id &&
-                    <span onClick={(e) => actionFunction(e, chat.users, true)} key={user.id}>{user.nickname}</span>
+                    <span onClick={(e) => actionFunction(e, chat.users, true)} key={user.id}>{user.nickname},</span>
                 )
               })}
             </ListItem>

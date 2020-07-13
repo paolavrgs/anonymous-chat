@@ -1,13 +1,14 @@
 import React, {useState,useContext} from 'react'
+import { Button } from 'antd'
 import { MessageOutlined, SolutionOutlined, CommentOutlined } from '@ant-design/icons'
 import MainTabs from '../components/MainTabs'
 import ChatShow from '../components/Chat'
+import ListOfGroups from '../components/ListOfGroups'
 import ListOfUsers from '../components/ListOfUsers'
 import ListOfChats from '../components/ListOfChats'
 import ChatsContext from '../context/chatsContext'
-import { createChat } from '../services/chats'
 import MainModal from '../components/Modal'
-import ListOfGroups from '../components/ListOfGroups'
+import { createChat } from '../services/chats'
 import { compareArray } from '../utils/array_comparator'
 
 export default function Home({currentUser}) {
@@ -104,15 +105,17 @@ export default function Home({currentUser}) {
       />
 
       <MainModal
-        title="Create new group"
+        title="Add users to group"
         modalVisible={modalVisible}
         hideModal={hideModal}
+        footer={
+          <Button onClick={(e) => openChat(e, groupChatUsers, true)} type="primary">Create group</Button>
+        }
       >
         <ListOfUsers
           actionFunction={addOrRemoveUserToGroup}
           currentUser={currentUser}
         />
-        <button onClick={(e) => openChat(e, groupChatUsers, true)}>Create group chat</button>
       </MainModal>
     </>
   )

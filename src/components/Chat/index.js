@@ -19,7 +19,17 @@ export default function ChatShow({ visible, currentChatId, ownerUser, participan
   return (
     <div className={`chat-show show-${visible}`}>
       <ChatHeader>
-        {/* <h4>{participantUser.nickname}</h4> */}
+        {participantsUser.length === 2 ? (
+            participantsUser.map(participant => {
+              return participant.id !== ownerUser.id &&
+                <h4 key={participant.id}>{participant.nickname}</h4>
+            })
+          ) : (
+            participantsUser.map(participant => {
+              return participant.id !== ownerUser.id && <h4 key={participant.id}>{`${participant.nickname},`}</h4>
+            })
+          )
+        }
       </ChatHeader>
 
       <ChatWrapper>

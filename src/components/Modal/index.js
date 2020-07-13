@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal } from 'antd';
 
-export default function MainModal({title, modalVisible, hideModal, children}) {
+export default function MainModal({title, modalVisible, hideModal, footer, children}) {
 
   return (
     <div>
@@ -9,7 +9,7 @@ export default function MainModal({title, modalVisible, hideModal, children}) {
         title={title}
         visible={modalVisible}
         onCancel={hideModal}
-        footer={false}
+        footer={footer}
       >
         {children}
       </Modal>

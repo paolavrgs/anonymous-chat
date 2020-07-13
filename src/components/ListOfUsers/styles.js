@@ -9,8 +9,11 @@ export const ListItem = styled.li`
   border: 1px solid rgb(235, 237, 240);
   padding: 10px;
   cursor: pointer;
+  margin-bottom: 5px;
 
   &.active {
-    background-color: red;
+    border-color: #238df9;
+    font-weight: bold;
+    color: #238df9;
   }
 `

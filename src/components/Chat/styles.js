@@ -5,11 +5,11 @@ export const ChatHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
   padding: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   h4 {
     font-weight: 600;
+    margin-bottom: 0;
   }
 `
 
@@ -17,7 +17,7 @@ export const ChatWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  max-height: 70vh;
+  height: calc(100% - 80px);
 `
 
 export const ChatForm = styled(Form)`
