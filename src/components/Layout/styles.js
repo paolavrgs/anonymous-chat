@@ -1,10 +1,20 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import { Layout } from 'antd'
+const { Header } = Layout
+
+export const StyledHeader = styled(Header)`
+  display: flex;
+  align-items: center;
+`
 
 export const Nickname = styled.div`
   padding: 5px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
   color: #fff;
-  word-break: break-all;
-  font-size: 12px;
+  font-size: 20px;
+`
+
+export const Logo = styled.img`
+  width: 100px;
+  object-fit: cover;
+  height: 100%;
 `
