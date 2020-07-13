@@ -21,6 +21,10 @@ export default function Home({currentUser}) {
 
   const showModal = () => {
     setModalVisible(true)
+
+    if (document.querySelectorAll('li.active').length !== 0) {
+      document.querySelectorAll('li.active').forEach(li => li.classList.remove('active'))
+    }
   }
 
   const hideModal = () => {
@@ -35,7 +39,6 @@ export default function Home({currentUser}) {
     if (!chatUsers.some(user => user.id === currentUser.id)) {
       chatUsers = [...participantsUsers, currentUser]
     }
-    console.log({chatUsers})
 
     const filteredChat = chats.filter(ch => ch.group === group)
 
@@ -59,7 +62,6 @@ export default function Home({currentUser}) {
   const addOrRemoveUserToGroup = (e, user) => {
     const userExist = groupChatUsers.some(u => u == user[0])
 
-    console.log('target', e.target)
     if (userExist) {
       const removeUserIndex = groupChatUsers.findIndex(u => u === user)
       groupChatUsers.splice(removeUserIndex, 1)
