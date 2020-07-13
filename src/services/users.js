@@ -11,7 +11,7 @@ export const createUser = (userSessionNickname) => {
     return {id}
   })
   .catch(function(error) {
-    console.error("Error adding document: ", error);
+    console.error("Error adding document: ", error)
   })
 
   return data

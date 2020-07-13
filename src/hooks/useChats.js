@@ -13,7 +13,7 @@ export default function useChats(currentUser) {
           const docData = doc.data()
           const { id } = doc
           return { ...docData, id }
-        });
+        })
 
         const newData = data.filter(chat => (chat.users.some(user => user.id === currentUser.id)))
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal } from 'antd';
+import { Modal } from 'antd'
 
 export default function MainModal({title, modalVisible, hideModal, footer, children}) {
 

@@ -18,7 +18,7 @@ export default function useUsers() {
           const docData = doc.data()
           const { id } = doc
           return { ...docData, id }
-        });
+        })
         setUsers(data)
       })
   }

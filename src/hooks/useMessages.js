@@ -14,7 +14,7 @@ export default function useMessages(chat_id) {
           const docData = doc.data()
           const { id } = doc
           return { ...docData, id }
-        });
+        })
         const newData = data.filter(message => message.chat_id === chat_id)
 
         setMessages(newData)

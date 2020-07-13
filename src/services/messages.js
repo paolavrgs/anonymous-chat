@@ -13,9 +13,9 @@ export const createMessage = (chat_id, owner, participant, body) => {
     created_at
   })
   .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
+    // console.log("Message created: ", docRef.id)
   })
   .catch(function(error) {
-    console.error("Error adding document: ", error);
+    console.error("Error adding document: ", error)
   })
 }
