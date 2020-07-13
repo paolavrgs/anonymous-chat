@@ -2,18 +2,18 @@ import React, {useContext} from 'react'
 import { ListItem, ListUl } from './styles'
 import ChatsContext from '../../context/chatsContext'
 
-export default function ListOfChats({currentUser, openChat}) {
+export default function ListOfChats({currentUser, actionFunction}) {
   const chats = useContext(ChatsContext)
 
   return (
     <ListUl>
-      {chats !== undefined && chats.map((chat) => {
+      {chats !== undefined && chats.filter(chat => chat.group === false).map((chat) => {
         return (
           <ListItem key={chat.id}>
             {chat.users.map(user => {
               return (
                 user.id !== currentUser.id &&
-                  <span onClick={() => openChat(user)} key={user.id}>{user.nickname}</span>
+                  <span onClick={(e) => actionFunction(e, chat.users)} key={user.id}>{user.nickname}</span>
               )
             })}
           </ListItem>

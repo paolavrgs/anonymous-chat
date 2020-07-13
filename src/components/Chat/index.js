@@ -4,7 +4,7 @@ import { Form, Input, Button } from 'antd'
 import { ChatHeader, ChatWrapper, ChatForm } from './styles'
 import Messages from '../Messages'
 
-export default function ChatShow({ visible, currentChatId, ownerUser, participantUser }) {
+export default function ChatShow({ visible, currentChatId, ownerUser, participantsUser }) {
   const [messageBody, setMessageBody] = useState('')
 
   const onChange = (e) => {
@@ -12,14 +12,14 @@ export default function ChatShow({ visible, currentChatId, ownerUser, participan
   }
 
   const onSubmit = () => {
-    createMessage(currentChatId, ownerUser, participantUser, messageBody)
+    createMessage(currentChatId, ownerUser, participantsUser, messageBody)
     setMessageBody('')
   }
 
   return (
     <div className={`chat-show show-${visible}`}>
       <ChatHeader>
-        <h4>{participantUser.nickname}</h4>
+        {/* <h4>{participantUser.nickname}</h4> */}
       </ChatHeader>
 
       <ChatWrapper>

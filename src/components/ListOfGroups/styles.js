@@ -9,8 +9,4 @@ export const ListItem = styled.li`
   border: 1px solid rgb(235, 237, 240);
   padding: 10px;
   cursor: pointer;
-
-  &.active {
-    background-color: red;
-  }
 `
