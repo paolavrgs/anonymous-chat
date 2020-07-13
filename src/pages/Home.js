@@ -44,7 +44,7 @@ export default function Home({currentUser}) {
     })
 
     if (!chat) {
-      createChat(chatUsers).then(ch => {
+      createChat(chatUsers, group).then(ch => {
         setCurrentChatId(ch.id)
       })
     } else {
@@ -52,15 +52,16 @@ export default function Home({currentUser}) {
     }
 
     setChatVisible(true)
+    hideModal()
+    setGroupChatUsers([])
   }
 
   const addOrRemoveUserToGroup = (e, user) => {
-    const userExist = groupChatUsers.some(u => u === user)
-    console.log(userExist)
+    const userExist = groupChatUsers.some(u => u == user[0])
 
+    console.log('target', e.target)
     if (userExist) {
       const removeUserIndex = groupChatUsers.findIndex(u => u === user)
-      
       groupChatUsers.splice(removeUserIndex, 1)
       e.target.classList.remove('active')
       setGroupChatUsers(groupChatUsers)
