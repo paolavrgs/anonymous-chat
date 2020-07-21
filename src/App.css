@@ -4,7 +4,7 @@
 
 .App-grid {
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 35% 1fr;
   gap: 10px;
 }
 
@@ -16,8 +16,23 @@
   box-shadow: 1px 1px 5px rgb(211, 211, 211);
 }
 
+.tabs-list {
+  overflow-y: scroll;
+}
+
+.tabs-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tabs-list::-webkit-scrollbar-thumb {
+  background-color: #e6e7ec;
+  outline: 1px solid #585e59;
+  border-radius: 5px;
+}
+
 .chat-show {
   display: none;
+  overflow-y: hidden;
 }
 
 .chat-show.show-true {

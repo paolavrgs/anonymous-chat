@@ -14,21 +14,27 @@ function App() {
   const users = useUsers()
   const chats = useChats(currentUser)
 
+  const _randomUuid = () => Math.floor(Math.random() * 10001)
+
   useEffect(() => {
-    let userSessionNickname
-    let userSessionId
+    const session = window.sessionStorage
+    const { userNickname, userId } = session
 
-    if (window.sessionStorage.userNickname === undefined && window.sessionStorage.userId === undefined) {
-      const randomNumber = Math.floor(Math.random() * 10001)
-      userSessionNickname = window.sessionStorage['userNickname'] = `user-${randomNumber}`
+    let userSessionNickname = null
+    let userSessionId = null
 
-      createUser(userSessionNickname).then(ch => {
-        userSessionId = window.sessionStorage['userId'] = ch.id
+    if (!userNickname && !userId) {
+      userSessionNickname = session['userNickname'] = `user-${_randomUuid()}`
+
+      createUser(userSessionNickname).then(user => {
+        userSessionId = session['userId'] = user.id
+        setUser({id: userSessionId, nickname: userSessionNickname})
       })
-    } else {
-      userSessionNickname = window.sessionStorage['userNickname']
-      userSessionId = window.sessionStorage['userId']
+      return
     }
+
+    userSessionNickname = session['userNickname']
+    userSessionId = session['userId']
 
     setUser({id: userSessionId, nickname: userSessionNickname})
   }, [])

@@ -16,8 +16,19 @@ export const ChatHeader = styled.div`
 export const ChatWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow-y: scroll;
   height: calc(100% - 80px);
+  padding: 0 10px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e6e7ec;
+    outline: 1px solid #585e59;
+    border-radius: 5px;
+  }
 `
 
 export const ChatForm = styled(Form)`

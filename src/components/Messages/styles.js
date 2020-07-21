@@ -10,7 +10,7 @@ export const ChatMessage = styled.div`
   width: fit-content;
   position: relative;
   margin: 5px 0;
-  word-break: break-all;
+  word-break: break-word;
 
   &.own {
     color: #fff;
