@@ -15,7 +15,7 @@ export default function ListOfGroups({currentUser, actionFunction, showModal}) {
               {chat.users.map(user => {
                 return (
                   user.id !== currentUser.id &&
-                    <span onClick={(e) => actionFunction(e, chat.users, true)} key={user.id}>{user.nickname},</span>
+                    <div onClick={(e) => actionFunction(e, chat.users, true)} key={user.id}>{user.nickname},</div>
                 )
               })}
             </ListItem>

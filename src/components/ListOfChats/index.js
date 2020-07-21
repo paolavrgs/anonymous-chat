@@ -13,7 +13,7 @@ export default function ListOfChats({currentUser, actionFunction}) {
             {chat.users.map(user => {
               return (
                 user.id !== currentUser.id &&
-                  <span onClick={(e) => actionFunction(e, chat.users)} key={user.id}>{user.nickname}</span>
+                  <div onClick={(e) => actionFunction(e, chat.users)} key={user.id}>{user.nickname}</div>
               )
             })}
           </ListItem>
