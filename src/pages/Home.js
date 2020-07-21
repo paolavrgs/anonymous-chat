@@ -97,12 +97,14 @@ export default function Home({currentUser}) {
           />
         </MainTabs>
       </div>
-      <ChatShow
-        visible={chatVisible}
-        currentChatId={currentChatId}
-        ownerUser={currentUser}
-        participantsUser={currentChatParticipants}
-      />
+
+      {chatVisible && 
+        <ChatShow
+          currentChatId={currentChatId}
+          ownerUser={currentUser}
+          participantsUser={currentChatParticipants}
+        />      
+      }
 
       <MainModal
         title="Add users to group"

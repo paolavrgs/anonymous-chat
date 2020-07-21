@@ -8,7 +8,7 @@
   gap: 10px;
 }
 
-.tabs-list, .chat-show {
+.tabs-list {
   background-color: white;
   padding: 20px;
   height: calc(100vh - 112px);
@@ -28,13 +28,4 @@
   background-color: #e6e7ec;
   outline: 1px solid #585e59;
   border-radius: 5px;
-}
-
-.chat-show {
-  display: none;
-  overflow-y: hidden;
-}
-
-.chat-show.show-true {
-  display: block;
 }

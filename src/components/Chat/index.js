@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { createMessage } from '../../services/messages'
 import { Form, Input, Button } from 'antd'
-import { ChatHeader, ChatWrapper, ChatForm } from './styles'
+import { ChatContainer, ChatHeader, ChatWrapper, ChatForm } from './styles'
 import Messages from '../Messages'
 
-export default function ChatShow({ visible, currentChatId, ownerUser, participantsUser }) {
+export default function ChatShow({ currentChatId, ownerUser, participantsUser }) {
   const [messageBody, setMessageBody] = useState('')
 
   const onChange = (e) => {
@@ -17,7 +17,7 @@ export default function ChatShow({ visible, currentChatId, ownerUser, participan
   }
 
   return (
-    <div className={`chat-show show-${visible}`}>
+    <ChatContainer>
       <ChatHeader>
         {participantsUser.length === 2 ? (
             participantsUser.map(participant => {
@@ -33,9 +33,7 @@ export default function ChatShow({ visible, currentChatId, ownerUser, participan
       </ChatHeader>
 
       <ChatWrapper>
-        {visible &&
-          <Messages chatId={currentChatId} currentUser={ownerUser} />
-        }
+        <Messages chatId={currentChatId} currentUser={ownerUser} />
       </ChatWrapper>
 
       <ChatForm onSubmit={onSubmit}>
@@ -46,6 +44,6 @@ export default function ChatShow({ visible, currentChatId, ownerUser, participan
           <Button htmlType="submit" onClick={onSubmit} type="primary">Send</Button>
         </Form.Item>
       </ChatForm>
-    </div>
+    </ChatContainer>
   )
 }

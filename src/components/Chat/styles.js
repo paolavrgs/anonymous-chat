@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 import { Form } from 'antd'
 
+export const ChatContainer = styled.div`
+  background-color: white;
+  padding: 20px;
+  height: calc(100vh - 112px);
+  position: relative;
+  box-shadow: 1px 1px 5px rgb(211, 211, 211);
+`
+
 export const ChatHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
   padding: 10px;
